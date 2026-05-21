@@ -64,6 +64,8 @@ node <SKILL_DIR>/extract-structure.mjs \
 
 If the script exits non-zero, read stderr and report the error. Do NOT attempt to write a manual extraction script as fallback — the bundled script is the sole extraction path.
 
+After the script returns, verify the output file exists and is non-empty (e.g. `test -s $PROJECT_ROOT/.understand-anything/tmp/ua-file-extract-results-<batchIndex>.json`). Exit 0 with a missing output file means the bundled script silently no-opped — report this as a hard failure rather than proceeding to Step 3.
+
 ### Step 3 — Read the extraction results
 
 Read `$PROJECT_ROOT/.understand-anything/tmp/ua-file-extract-results-<batchIndex>.json`. The output format is:
